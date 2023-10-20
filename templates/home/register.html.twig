@@ -1,6 +1,6 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Enregistrer{% endblock %}
+{% block title %}Enregistrement utilisateur{% endblock %}
 
 {% block body %}
 
@@ -53,6 +53,24 @@
                             <div class="form-group">
                                 {{ form_label(registrationForm.role) }}
                                 {{ form_widget(registrationForm.role, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(registrationForm.genre) }}
+                                {{ form_widget(registrationForm.genre, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(registrationForm.telephone) }}
+                                {{ form_widget(registrationForm.telephone, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(registrationForm.adresse) }}
+                                {{ form_widget(registrationForm.adresse, {'attr': {
                                     'class':'required form-control',
                                 }}) }}
                             </div>

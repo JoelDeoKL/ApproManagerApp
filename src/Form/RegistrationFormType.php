@@ -22,11 +22,20 @@ class RegistrationFormType extends AbstractType
             ->add('nom')
             ->add('postnom')
             ->add('prenom')
+            ->add('telephone')
+            ->add('adresse')
+            ->add('genre', ChoiceType::class, [
+                'choices' => [
+                    'Masculin' => 'Masculin',
+                    'Feminin' => 'Feminin',
+                    'Autres' => 'Autres'
+                ],
+            ])
             ->add('role', ChoiceType::class, [
                 'choices' => [
-                    'Operateur' => 'Opérateur',
+                    'Opérateur' => 'Operateur',
                     'Inspec DGDA' => 'Inspecteur DGDA',
-                    'Inspec Division' => 'Inspecteur de la Division',
+                    'Inspecteur Division' => 'Inspecteur Division',
                     'Approvisionneur' => 'Approvisionneur'
                 ],
             ])

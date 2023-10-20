@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Operateur;
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,21 +17,22 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig');
     }
 
-    #[Route('/declaration', name: 'declaration')]
-    public function declaration(): Response
+    #[Route('/les_operateurs', name: 'les_operateurs')]
+    public function les_operateurs(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('home/declare.html.twig');
+        $operateurs = $entityManager->getRepository(User::class)->findBy(['role' => 'Opérateur']);
+
+        return $this->render('home/operateurs.html.twig', ['operateurs' => $operateurs]);
     }
 
-    #[Route('/proces_verbal', name: 'proces_verbal')]
-    public function proces_verbal(): Response
+    #[Route('/les_inspecteurs', name: 'les_inspecteurs')]
+    public function les_inspecteurs(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('home/proces_verbal.html.twig');
-    }
+        $dgda = $entityManager->getRepository(User::class)->findBy(['role' => 'Inspecteur DGDA']);
+        $division = $entityManager->getRepository(User::class)->findBy(['role' => 'Inspecteur Division']);
 
-    #[Route('/rapport', name: 'rapport')]
-    public function rapport(): Response
-    {
-        return $this->render('home/rapport.html.twig');
+        $inspecteurs = array_merge($dgda, $division);
+
+        return $this->render('home/inspecteurs.html.twig', ['inspecteurs' => $inspecteurs]);
     }
 }
