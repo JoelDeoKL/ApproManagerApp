@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Rapport;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,6 +22,7 @@ class RapportType extends AbstractType
             ->add('produit')
             ->add('operateur')
             ->add('auteur')
+            ->add('editer', SubmitType::class)
         ;
     }
 

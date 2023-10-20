@@ -1,19 +1,68 @@
-{% extends 'base.html.twig' %}
+{% extends 'template.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Enregistrer{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
 
-    {{ form_errors(registrationForm) }}
+<!-- partial -->
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Formulaire ajout utilisateur</h4>
+                        <p class="card-description">
+                            Remplir ce formulaire
+                        </p>
+                        {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+                        {{ form_start(registrationForm, {'attr': {
+                            'class':'forms-sample',
+                        }}) }}
+                            <div class="form-group">
+                                {{ form_label(registrationForm.nom) }}
+                                {{ form_widget(registrationForm.nom, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(registrationForm.postnom) }}
+                                {{ form_widget(registrationForm.postnom, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(registrationForm.prenom) }}
+                                {{ form_widget(registrationForm.prenom, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(registrationForm.email) }}
+                                {{ form_widget(registrationForm.email, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(registrationForm.password) }}
+                                {{ form_widget(registrationForm.password, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(registrationForm.role) }}
+                                {{ form_widget(registrationForm.role, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                        <button type="submit" class="btn btn-primary me-2">Register</button>
+                        {{ form_end(registrationForm) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

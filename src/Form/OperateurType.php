@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Operateur;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,6 +18,7 @@ class OperateurType extends AbstractType
             ->add('raison_sociale')
             ->add('genre')
             ->add('telephone')
+            ->add('editer', SubmitType::class)
         ;
     }
 
