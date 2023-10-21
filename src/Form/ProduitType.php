@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +18,15 @@ class ProduitType extends AbstractType
             ->add('date_arrive')
             ->add('provenance')
             ->add('quantite')
-            ->add('nature')
+            ->add('nature', ChoiceType::class, [
+                'choices' => [
+                    'Kilos' => 'Kilos',
+                    'Tonnes' => 'Tonnes',
+                    'Sacs' => 'Sacs',
+                    'Cartons' => 'Cartons',
+                    'Bidons' => 'Bidons'
+                ],
+            ])
             ->add('operateur')
             ->add('editer', SubmitType::class)
         ;

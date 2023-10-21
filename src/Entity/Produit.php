@@ -19,7 +19,7 @@ class Produit
     #[ORM\Column(length: 255)]
     private ?string $nom_produit = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_arrive = null;
 
     #[ORM\Column(length: 255)]
@@ -29,7 +29,7 @@ class Produit
     private ?string $quantite = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
-    private ?Operateur $operateur = null;
+    private ?User $operateur = null;
 
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Declaration::class)]
     private Collection $declarations;
@@ -99,12 +99,12 @@ class Produit
         return $this;
     }
 
-    public function getOperateur(): ?Operateur
+    public function getOperateur(): ?User
     {
         return $this->operateur;
     }
 
-    public function setOperateur(?Operateur $operateur): static
+    public function setOperateur(?User $operateur): static
     {
         $this->operateur = $operateur;
 

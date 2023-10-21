@@ -1,0 +1,65 @@
+{% extends 'template_op.html.twig' %}
+
+{% block title %}ApproManager{% endblock %}
+
+{% block body %}
+
+<!-- partial -->
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Formulaire ajout d'un produit</h4>
+                        <p class="card-description">
+                            Remplir ce formulaire
+                        </p>
+                        {{ form_start(form, {'attr': {
+                            'class':'forms-sample',
+                        }}) }}
+                            <div class="form-group">
+                                {{ form_label(form.nom_produit) }}
+                                {{ form_widget(form.nom_produit, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.quantite) }}
+                                {{ form_widget(form.quantite, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.nature) }}
+                                {{ form_widget(form.nature, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.provenance) }}
+                                {{ form_widget(form.provenance, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.date_arrive) }}
+                                {{ form_widget(form.date_arrive, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.operateur) }}
+                                {{ form_widget(form.operateur, {'attr': {
+                                    'class':'input-group date datepicker navbar-date-picker',
+                                }}) }}
+                            </div>
+
+                        {{ form_widget(form.editer, {'attr': {'class':'btn btn-primary'}}) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

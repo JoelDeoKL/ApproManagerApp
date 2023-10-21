@@ -56,10 +56,10 @@
                 </button>
             </div>
             <div>
-                <a class="navbar-brand brand-logo" href="index.html.twig">
+                <a class="navbar-brand brand-logo" href="{{ path('operateur') }}">
                     <img src="{{ asset('assets/images/logo.svg') }}" alt="logo" />
                 </a>
-                <a class="navbar-brand brand-logo-mini" href="index.html.twig">
+                <a class="navbar-brand brand-logo-mini" href="{{ path('operateur') }}">
                     <img src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" />
                 </a>
             </div>
@@ -361,45 +361,45 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html.twig">
+                    <a class="nav-link" href="{{ path('operateur') }}">
                         <i class="mdi mdi-grid-large menu-icon"></i>
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item nav-category">Gestion des stocks</li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" href="{{ path('produits') }}" aria-expanded="false" aria-controls="ui-basic">
                         <i class="menu-icon mdi mdi-card-text-outline"></i>
                         <span class="menu-title">Voir mon stock</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" href="{{ path('editer_produit') }}" aria-expanded="false" aria-controls="ui-basic">
                         <i class="menu-icon mdi mdi-floor-plan"></i>
-                        <span class="menu-title">Ajouter une entrée</span>
+                        <span class="menu-title">Ajouter un produit</span>
                     </a>
                 </li>
                 <li class="nav-item nav-category">Les Déclarations</li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                    <a class="nav-link" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                         <i class="menu-icon mdi mdi-card-text-outline"></i>
                         <span class="menu-title">Voir mes déclarations</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                    <a class="nav-link" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                         <i class="menu-icon mdi mdi-card-text-outline"></i>
                         <span class="menu-title">Faire une déclaration</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                    <a class="nav-link" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                         <i class="menu-icon mdi mdi-card-text-outline"></i>
                         <span class="menu-title">Voir proces verbal</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                    <a class="nav-link" href="#auth" aria-expanded="false" aria-controls="auth">
                         <i class="menu-icon mdi mdi-account-circle-outline"></i>
                         <span class="menu-title">Utilisateur</span>
                         <i class="menu-arrow"></i>
