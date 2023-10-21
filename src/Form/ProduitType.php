@@ -27,7 +27,7 @@ class ProduitType extends AbstractType
                     'Bidons' => 'Bidons'
                 ],
             ])
-            ->add('operateur')
+            ->add('user')
             ->add('editer', SubmitType::class)
         ;
     }

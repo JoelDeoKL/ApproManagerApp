@@ -20,7 +20,7 @@ class RapportType extends AbstractType
             ->add('type')
             ->add('nom_producteur')
             ->add('produit')
-            ->add('operateur')
+            ->add('user')
             ->add('auteur')
             ->add('editer', SubmitType::class)
         ;

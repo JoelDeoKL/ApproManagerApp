@@ -1,6 +1,6 @@
 {% extends 'template_op.html.twig' %}
 
-{% block title %}ApproManager{% endblock %}
+{% block title %}ApproManager - Déclaration{% endblock %}
 
 {% block body %}
 
@@ -11,7 +11,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Formulaire ajout d'un produit</h4>
+                        <h4 class="card-title">Formulaire Déclaration d'un produit</h4>
                         <p class="card-description">
                             Remplir ce formulaire
                         </p>
@@ -19,14 +19,26 @@
                             'class':'forms-sample',
                         }}) }}
                             <div class="form-group">
-                                {{ form_label(form.nom_produit) }}
-                                {{ form_widget(form.nom_produit, {'attr': {
+                                {{ form_label(form.produit) }}
+                                {{ form_widget(form.produit, {'attr': {
                                     'class':'required form-control',
                                 }}) }}
                             </div>
                             <div class="form-group">
-                                {{ form_label(form.quantite) }}
-                                {{ form_widget(form.quantite, {'attr': {
+                                {{ form_label(form.user) }}
+                                {{ form_widget(form.user, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.qte_achete) }}
+                                {{ form_widget(form.qte_achete, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.qte_vendue) }}
+                                {{ form_widget(form.qte_vendue, {'attr': {
                                     'class':'required form-control',
                                 }}) }}
                             </div>
@@ -37,20 +49,9 @@
                                 }}) }}
                             </div>
                             <div class="form-group">
-                                {{ form_label(form.provenance) }}
-                                {{ form_widget(form.provenance, {'attr': {
+                                {{ form_label(form.date_declaration) }}
+                                {{ form_widget(form.date_declaration, {'attr': {
                                     'class':'required form-control',
-                                }}) }}
-                            </div>
-                            <div class="form-group">
-                                {{ form_label(form.date_arrive) }}
-                                {{ form_widget(form.date_arrive, {'attr': {
-                                    'class':'required form-control',
-                                }}) }}
-                            </div>
-                            <div class="form-group">
-                                {{ form_widget(form.user, {'attr': {
-                                    'class':'input-group date datepicker navbar-date-picker',
                                 }}) }}
                             </div>
 

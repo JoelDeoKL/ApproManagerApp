@@ -25,9 +25,6 @@ class Declaration
     #[ORM\ManyToOne(inversedBy: 'declarations')]
     private ?Produit $produit = null;
 
-    #[ORM\ManyToOne(inversedBy: 'declarations')]
-    private ?Operateur $operateur = null;
-
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_declaration = null;
 
@@ -36,6 +33,9 @@ class Declaration
 
     #[ORM\Column(length: 255)]
     private ?string $nature = null;
+
+    #[ORM\ManyToOne(inversedBy: 'declarations')]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -79,18 +79,6 @@ class Declaration
     public function setProduit(?Produit $produit): static
     {
         $this->produit = $produit;
-
-        return $this;
-    }
-
-    public function getOperateur(): ?Operateur
-    {
-        return $this->operateur;
-    }
-
-    public function setOperateur(?Operateur $operateur): static
-    {
-        $this->operateur = $operateur;
 
         return $this;
     }
@@ -142,6 +130,18 @@ class Declaration
     public function setNature(string $nature): static
     {
         $this->nature = $nature;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

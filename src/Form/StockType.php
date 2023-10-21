@@ -15,7 +15,7 @@ class StockType extends AbstractType
         $builder
             ->add('quantite')
             ->add('produit')
-            ->add('operateur')
+            ->add('user')
             ->add('declaration')
             ->add('editer', SubmitType::class)
         ;

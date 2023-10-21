@@ -44,9 +44,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $role = null;
 
-    #[ORM\OneToMany(mappedBy: 'auteur', targetEntity: Rapport::class)]
-    private Collection $rapports;
-
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
 
@@ -56,9 +53,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $genre = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Rapport::class)]
+    private Collection $rapports;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Stock::class)]
+    private Collection $stocks;
+
     public function __construct()
     {
         $this->rapports = new ArrayCollection();
+        $this->stocks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -248,5 +252,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->nom . ' ' . $this->postnom . ' ' . $this->prenom;
+    }
+
+    /**
+     * @return Collection<int, Stock>
+     */
+    public function getStocks(): Collection
+    {
+        return $this->stocks;
+    }
+
+    public function addStock(Stock $stock): static
+    {
+        if (!$this->stocks->contains($stock)) {
+            $this->stocks->add($stock);
+            $stock->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stock $stock): static
+    {
+        if ($this->stocks->removeElement($stock)) {
+            // set the owning side to null (unless already changed)
+            if ($stock->getUser() === $this) {
+                $stock->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

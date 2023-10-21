@@ -23,9 +23,6 @@ class Rapport
     #[ORM\ManyToOne(inversedBy: 'rapports')]
     private ?Produit $produit = null;
 
-    #[ORM\ManyToOne(inversedBy: 'rapports')]
-    private ?Operateur $operateur = null;
-
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_fabrication = null;
 
@@ -40,6 +37,9 @@ class Rapport
 
     #[ORM\Column(length: 255)]
     private ?string $nom_producteur = null;
+
+    #[ORM\ManyToOne(inversedBy: 'rapports')]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -78,18 +78,6 @@ class Rapport
     public function setProduit(?Produit $produit): static
     {
         $this->produit = $produit;
-
-        return $this;
-    }
-
-    public function getOperateur(): ?Operateur
-    {
-        return $this->operateur;
-    }
-
-    public function setOperateur(?Operateur $operateur): static
-    {
-        $this->operateur = $operateur;
 
         return $this;
     }
@@ -150,6 +138,18 @@ class Rapport
     public function setNomProducteur(string $nom_producteur): static
     {
         $this->nom_producteur = $nom_producteur;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

@@ -21,11 +21,11 @@ class Stock
     #[ORM\Column(length: 255)]
     private ?string $quantite = null;
 
-    #[ORM\ManyToOne(inversedBy: 'stocks')]
-    private ?Operateur $operateur = null;
-
     #[ORM\ManyToMany(targetEntity: Declaration::class, inversedBy: 'stocks')]
     private Collection $declaration;
+
+    #[ORM\ManyToOne(inversedBy: 'stocks')]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -61,18 +61,6 @@ class Stock
         return $this;
     }
 
-    public function getOperateur(): ?Operateur
-    {
-        return $this->operateur;
-    }
-
-    public function setOperateur(?Operateur $operateur): static
-    {
-        $this->operateur = $operateur;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Declaration>
      */
@@ -93,6 +81,18 @@ class Stock
     public function removeDeclaration(Declaration $declaration): static
     {
         $this->declaration->removeElement($declaration);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

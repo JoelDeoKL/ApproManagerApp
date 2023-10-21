@@ -28,9 +28,6 @@ class Produit
     #[ORM\Column(length: 255)]
     private ?string $quantite = null;
 
-    #[ORM\ManyToOne(inversedBy: 'produits')]
-    private ?User $operateur = null;
-
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Declaration::class)]
     private Collection $declarations;
 
@@ -39,6 +36,9 @@ class Produit
 
     #[ORM\Column(length: 255)]
     private ?string $nature = null;
+
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -95,18 +95,6 @@ class Produit
     public function setQuantite(string $quantite): static
     {
         $this->quantite = $quantite;
-
-        return $this;
-    }
-
-    public function getOperateur(): ?User
-    {
-        return $this->operateur;
-    }
-
-    public function setOperateur(?User $operateur): static
-    {
-        $this->operateur = $operateur;
 
         return $this;
     }
@@ -181,5 +169,22 @@ class Produit
         $this->nature = $nature;
 
         return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->nom_produit;
     }
 }
