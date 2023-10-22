@@ -368,13 +368,19 @@
                 </li>
                 <li class="nav-item nav-category">Approvisionnement</li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" href="{{ path('stocks') }}" aria-expanded="false" aria-controls="ui-basic">
                         <i class="menu-icon mdi mdi-card-text-outline"></i>
-                        <span class="menu-title">Voir les stocks</span>
+                        <span class="menu-title">Voir le stocks</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <a class="nav-link" href="{{ path('les_pv') }}" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="menu-icon mdi mdi-floor-plan"></i>
+                        <span class="menu-title">Voir les PV </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('editer_pv') }}" aria-expanded="false" aria-controls="ui-basic">
                         <i class="menu-icon mdi mdi-floor-plan"></i>
                         <span class="menu-title">Etablir proces verbal </span>
                     </a>

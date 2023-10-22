@@ -59,10 +59,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Stock::class)]
     private Collection $stocks;
 
+    #[ORM\OneToMany(mappedBy: 'auteur', targetEntity: ProcesVerbal::class)]
+    private Collection $procesVerbals;
+
     public function __construct()
     {
         $this->rapports = new ArrayCollection();
         $this->stocks = new ArrayCollection();
+        $this->procesVerbals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -278,6 +282,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($stock->getUser() === $this) {
                 $stock->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProcesVerbal>
+     */
+    public function getProcesVerbals(): Collection
+    {
+        return $this->procesVerbals;
+    }
+
+    public function addProcesVerbal(ProcesVerbal $procesVerbal): static
+    {
+        if (!$this->procesVerbals->contains($procesVerbal)) {
+            $this->procesVerbals->add($procesVerbal);
+            $procesVerbal->setAuteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProcesVerbal(ProcesVerbal $procesVerbal): static
+    {
+        if ($this->procesVerbals->removeElement($procesVerbal)) {
+            // set the owning side to null (unless already changed)
+            if ($procesVerbal->getAuteur() === $this) {
+                $procesVerbal->setAuteur(null);
             }
         }
 
