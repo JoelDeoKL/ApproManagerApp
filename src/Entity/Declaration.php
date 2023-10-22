@@ -25,7 +25,7 @@ class Declaration
     #[ORM\ManyToOne(inversedBy: 'declarations')]
     private ?Produit $produit = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_declaration = null;
 
     #[ORM\ManyToMany(targetEntity: Stock::class, mappedBy: 'declaration')]

@@ -1,0 +1,82 @@
+{% extends 'template_insp.html.twig' %}
+
+{% block title %}ApproManager - Rapport {% endblock %}
+
+{% block body %}
+
+<!-- partial -->
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Formulaire de création des rapports</h4>
+                        <p class="card-description">
+                            Remplir ce formulaire
+                        </p>
+                        {{ form_start(form, {'attr': {
+                            'class':'forms-sample',
+                        }}) }}
+                            <div class="form-group">
+                                {{ form_label(form.produit) }}
+                                {{ form_widget(form.produit, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.quantite) }}
+                                {{ form_widget(form.quantite, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.nature) }}
+                                {{ form_widget(form.nature, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.date_fabrication) }}
+                                {{ form_widget(form.date_fabrication, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.date_expiration) }}
+                                {{ form_widget(form.date_expiration, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.auteur) }}
+                                {{ form_widget(form.auteur, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.type) }}
+                                {{ form_widget(form.type, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.operateur) }}
+                                {{ form_widget(form.operateur, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.nom_producteur) }}
+                                {{ form_widget(form.nom_producteur, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
+                            </div>
+                        {{ form_widget(form.editer, {'attr': {'class':'btn btn-primary'}}) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
