@@ -14,8 +14,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class InspecteurController extends AbstractController
 {
-    #[Route('/inspecteur', name: 'app_inspecteur')]
+    #[Route('/dgda', name: 'dgda')]
     public function index(): Response
+    {
+        return $this->render('inspecteur/index.html.twig');
+    }
+
+    #[Route('/division', name: 'division')]
+    public function division(): Response
     {
         return $this->render('inspecteur/index.html.twig');
     }
@@ -72,9 +78,12 @@ class InspecteurController extends AbstractController
     }
 
     #[Route('/rapports', name: 'rapports')]
-    public function rapports(EntityManagerInterface $entityManager): Response
+    public function rapports(EntityManagerInterface $entityManager, Request $request): Response
     {
-        $rapports = $entityManager->getRepository(Rapport::class)->findAll();
+        $session = $request->getSession();
+        $user = $entityManager->getRepository(User::class)->findBy(["email" => $session->all()["_security.last_username"]]);
+
+        $rapports = $entityManager->getRepository(Rapport::class)->findBy(['auteur' => $user[0] ]);
 
         return $this->render('inspecteur/rapports.html.twig', ['rapports' => $rapports]);
     }

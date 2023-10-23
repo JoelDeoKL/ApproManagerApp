@@ -361,7 +361,7 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html.twig">
+                    <a class="nav-link" href="{{ path('approvisionneur') }}">
                         <i class="mdi mdi-grid-large menu-icon"></i>
                         <span class="menu-title">Dashboard</span>
                     </a>
@@ -392,16 +392,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                    <a class="nav-link" href="{{ path('app_logout') }}">
                         <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                        <span class="menu-title">Utilisateur</span>
-                        <i class="menu-arrow"></i>
+                        <span class="menu-title">Se deconnecter</span>
                     </a>
-                    <div class="collapse" id="auth">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Se déconnecter </a></li>
-                        </ul>
-                    </div>
                 </li>
             </ul>
         </nav>

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Declaration;
+use App\Entity\ProcesVerbal;
 use App\Entity\Produit;
 use App\Entity\User;
 use App\Form\DeclarationType;
@@ -25,9 +26,12 @@ class OperateurController extends AbstractController
     }
 
     #[Route('/produits', name: 'produits')]
-    public function produits(EntityManagerInterface $entityManager): Response
+    public function produits(EntityManagerInterface $entityManager, Request $request): Response
     {
-        $produits= $entityManager->getRepository(Produit::class)->findAll();
+        $session = $request->getSession();
+        $user = $entityManager->getRepository(User::class)->findBy(["email" => $session->all()["_security.last_username"]]);
+
+        $produits= $entityManager->getRepository(Produit::class)->findBy(['user' => $user[0] ]);
 
         return $this->render('operateur/produits.html.twig', ['produits' => $produits]);
     }
@@ -70,9 +74,12 @@ class OperateurController extends AbstractController
     }
 
     #[Route('/declarations', name: 'declarations')]
-    public function declarations(EntityManagerInterface $entityManager): Response
+    public function declarations(EntityManagerInterface $entityManager, Request $request): Response
     {
-        $declarations = $entityManager->getRepository(Declaration::class)->findAll();
+        $session = $request->getSession();
+        $user = $entityManager->getRepository(User::class)->findBy(["email" => $session->all()["_security.last_username"]]);
+
+        $declarations = $entityManager->getRepository(Declaration::class)->findBy(['user' => $user[0] ]);
 
         return $this->render('operateur/declarations.html.twig', ['declarations' => $declarations ]);
     }
@@ -113,5 +120,20 @@ class OperateurController extends AbstractController
             ]);
         }
     }
+
+    #[Route('/mes_pv', name: 'mes_pv')]
+    public function mes_pv(EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $session = $request->getSession();
+
+        $user = $entityManager->getRepository(User::class)->findBy(["email" => $session->all()["_security.last_username"]]);
+
+        $pvs = $entityManager->getRepository(ProcesVerbal::class)->findBy([
+            'operateur' => $user[0]->getId(),
+        ]);
+
+        return $this->render('operateur/pvs.html.twig', ['pvs' => $pvs]);
+    }
+
 
 }
